@@ -1,81 +1,123 @@
+// Global variables
+let selectedProduct = null;
+let selectedSize = null;
+let selectedPrice = null;
+
+// DOM elements
+const modal = document.getElementById('purchaseModal');
+const modalTitle = document.getElementById('modalTitle');
+const form = document.getElementById('purchaseForm');
+const submitBtn = document.getElementById('submitBtn');
+const successOverlay = document.getElementById('successOverlay');
+const successMessage = document.getElementById('successMessage');
+
+// Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
-    const modal = document.getElementById('purchaseModal');
-    const modalTitle = document.getElementById('modalTitle');
-    const submitBtn = document.getElementById('submitBtn');
-    const closeBtn = document.querySelector('.close');
-    const purchaseForm = document.getElementById('purchaseForm');
+    initializeSizeSelection();
+    initializeModal();
+    initializeForm();
+    formatCardInputs();
+});
+
+// Size selection functionality
+function initializeSizeSelection() {
+    const sizeButtons = document.querySelectorAll('.size-btn');
+    const buyButtons = document.querySelectorAll('.buy-btn');
+
+    sizeButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const productCard = this.closest('.product-card');
+            const sizeBtns = productCard.querySelectorAll('.size-btn');
+            const buyBtn = productCard.querySelector('.buy-btn');
+            
+            // Remove active class from all size buttons in this product
+            sizeBtns.forEach(btn => btn.classList.remove('active'));
+            
+            // Add active class to clicked button
+            this.classList.add('active');
+            
+            // Enable buy button and update text
+            const size = this.dataset.size;
+            const product = buyBtn.dataset.product;
+            const price = buyBtn.dataset.price;
+            
+            buyBtn.disabled = false;
+            buyBtn.textContent = `ACQUISTA ORA - €${price}`;
+            buyBtn.classList.add('enabled');
+            
+            // Store selection
+            buyBtn.onclick = () => openPurchaseModal(product, size, price);
+        });
+    });
+}
+
+// Open purchase modal
+function openPurchaseModal(product, size, price) {
+    selectedProduct = product;
+    selectedSize = size;
+    selectedPrice = price;
     
-    let currentProduct = '';
-    let currentSize = '';
-    let currentPrice = '';
+    modalTitle.textContent = `${product} - Taglia EU ${size}`;
+    submitBtn.textContent = `Completa l'acquisto - €${price}`;
+    
+    modal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+}
 
-    // Handle size selection
-    document.addEventListener('click', function(e) {
-        if (e.target.classList.contains('size-btn')) {
-            const productCard = e.target.closest('.product-card');
-            const sizeButtons = productCard.querySelectorAll('.size-btn');
-            const buyButton = productCard.querySelector('.buy-btn');
-            
-            // Remove selected class from all size buttons in this product
-            sizeButtons.forEach(btn => btn.classList.remove('selected'));
-            
-            // Add selected class to clicked button
-            e.target.classList.add('selected');
-            
-            // Update buy button
-            const selectedSize = e.target.dataset.size;
-            buyButton.textContent = 'Acquista ora';
-            buyButton.disabled = false;
-            buyButton.dataset.selectedSize = selectedSize;
-        }
-    });
-
-    // Handle buy button click
-    document.addEventListener('click', function(e) {
-        if (e.target.classList.contains('buy-btn') && !e.target.disabled) {
-            const selectedSize = e.target.dataset.selectedSize;
-            if (!selectedSize) {
-                alert('Seleziona una taglia prima di procedere');
-                return;
-            }
-            
-            currentProduct = e.target.dataset.product;
-            currentSize = selectedSize;
-            currentPrice = e.target.dataset.price;
-            
-            // Update modal
-            modalTitle.textContent = `${currentProduct} - EU ${currentSize}`;
-            submitBtn.textContent = `Completa l'acquisto - €${currentPrice}`;
-            
-            // Show modal
-            modal.style.display = 'block';
-            document.body.style.overflow = 'hidden';
-        }
-    });
-
-    // Close modal
-    closeBtn.addEventListener('click', function() {
-        modal.style.display = 'none';
-        document.body.style.overflow = 'auto';
-    });
-
+// Initialize modal functionality
+function initializeModal() {
+    const closeBtn = document.querySelector('.close');
+    
+    // Close modal when clicking X
+    closeBtn.addEventListener('click', closeModal);
+    
     // Close modal when clicking outside
-    window.addEventListener('click', function(e) {
-        if (e.target === modal) {
-            modal.style.display = 'none';
-            document.body.style.overflow = 'auto';
+    window.addEventListener('click', function(event) {
+        if (event.target === modal) {
+            closeModal();
         }
     });
+    
+    // Close modal with Escape key
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape' && modal.style.display === 'block') {
+            closeModal();
+        }
+    });
+}
 
-    // Handle form submission
-    purchaseForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        const formData = new FormData(purchaseForm);
+// Close modal
+function closeModal() {
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+    form.reset();
+}
+
+// Initialize form functionality
+function initializeForm() {
+    form.addEventListener('submit', handleFormSubmit);
+}
+
+// Handle form submission
+async function handleFormSubmit(event) {
+    event.preventDefault();
+    
+    if (!selectedProduct || !selectedSize || !selectedPrice) {
+        alert('Errore: informazioni prodotto mancanti');
+        return;
+    }
+    
+    // Disable submit button
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Elaborazione...';
+    
+    try {
+        // Collect form data
+        const formData = new FormData(form);
         const orderData = {
-            product: currentProduct,
-            size: currentSize,
-            price: currentPrice,
+            product: selectedProduct,
+            size: selectedSize,
+            price: selectedPrice,
             nome: formData.get('nome'),
             cognome: formData.get('cognome'),
             email: formData.get('email'),
@@ -90,91 +132,119 @@ document.addEventListener('DOMContentLoaded', function() {
             cvv: formData.get('cvv'),
             timestamp: new Date().toISOString()
         };
-
-        // Send data to backend
-        fetch('/api/orders', {
+        
+        // Send to API
+        const response = await fetch('/api/orders', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(orderData)
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                // Show success message
-                showSuccessMessage();
-                modal.style.display = 'none';
-                document.body.style.overflow = 'auto';
-                purchaseForm.reset();
-            } else {
-                alert('Errore durante l\'elaborazione dell\'ordine. Riprova.');
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            alert('Errore di connessione. Riprova.');
         });
-    });
+        
+        const result = await response.json();
+        
+        if (result.success) {
+            // Show success message
+            showSuccessMessage();
+            
+            // Close modal after delay
+            setTimeout(() => {
+                closeModal();
+                hideSuccessMessage();
+            }, 3000);
+        } else {
+            throw new Error(result.message || 'Errore sconosciuto');
+        }
+        
+    } catch (error) {
+        console.error('Error:', error);
+        alert('Errore nell\'invio dell\'ordine: ' + error.message);
+    } finally {
+        // Re-enable submit button
+        submitBtn.disabled = false;
+        submitBtn.textContent = `Completa l'acquisto - €${selectedPrice}`;
+    }
+}
 
-    // Format card number input
-    document.getElementById('numeroCarta').addEventListener('input', function(e) {
+// Show success message
+function showSuccessMessage() {
+    successOverlay.style.display = 'block';
+    successMessage.style.display = 'block';
+    
+    // Animate in
+    setTimeout(() => {
+        successOverlay.style.opacity = '1';
+        successMessage.style.opacity = '1';
+        successMessage.style.transform = 'translate(-50%, -50%) scale(1)';
+    }, 10);
+}
+
+// Hide success message
+function hideSuccessMessage() {
+    successOverlay.style.opacity = '0';
+    successMessage.style.opacity = '0';
+    successMessage.style.transform = 'translate(-50%, -50%) scale(0.8)';
+    
+    setTimeout(() => {
+        successOverlay.style.display = 'none';
+        successMessage.style.display = 'none';
+    }, 300);
+}
+
+// Format card inputs
+function formatCardInputs() {
+    const cardNumberInput = document.getElementById('numeroCarta');
+    const expiryInput = document.getElementById('scadenza');
+    const cvvInput = document.getElementById('cvv');
+    
+    // Format card number
+    cardNumberInput.addEventListener('input', function(e) {
         let value = e.target.value.replace(/\s/g, '').replace(/[^0-9]/gi, '');
         let formattedValue = value.match(/.{1,4}/g)?.join(' ') || value;
-        if (formattedValue !== e.target.value) {
-            e.target.value = formattedValue;
-        }
+        if (formattedValue.length > 19) formattedValue = formattedValue.substr(0, 19);
+        e.target.value = formattedValue;
     });
-
-    // Format expiry date input
-    document.getElementById('scadenza').addEventListener('input', function(e) {
+    
+    // Format expiry date
+    expiryInput.addEventListener('input', function(e) {
         let value = e.target.value.replace(/\D/g, '');
         if (value.length >= 2) {
             value = value.substring(0, 2) + '/' + value.substring(2, 4);
         }
         e.target.value = value;
     });
-
-    // Format CVV input
-    document.getElementById('cvv').addEventListener('input', function(e) {
-        e.target.value = e.target.value.replace(/\D/g, '').substring(0, 3);
+    
+    // Format CVV
+    cvvInput.addEventListener('input', function(e) {
+        e.target.value = e.target.value.replace(/[^0-9]/g, '').substring(0, 3);
     });
-});
+}
 
+// Utility function to validate form
+function validateForm() {
+    const requiredFields = form.querySelectorAll('[required]');
+    let isValid = true;
+    
+    requiredFields.forEach(field => {
+        if (!field.value.trim()) {
+            isValid = false;
+            field.classList.add('error');
+        } else {
+            field.classList.remove('error');
+        }
+    });
+    
+    return isValid;
+}
 
-    // Show success message function
-    function showSuccessMessage() {
-        // Create success overlay and message if they don't exist
-        let successOverlay = document.getElementById('successOverlay');
-        let successMessage = document.getElementById('successMessage');
-        
-        if (!successOverlay) {
-            successOverlay = document.createElement('div');
-            successOverlay.id = 'successOverlay';
-            successOverlay.className = 'success-overlay';
-            document.body.appendChild(successOverlay);
-        }
-        
-        if (!successMessage) {
-            successMessage = document.createElement('div');
-            successMessage.id = 'successMessage';
-            successMessage.className = 'success-message';
-            successMessage.innerHTML = `
-                <span class="checkmark">✅</span>
-                <div>Ordine completato con successo!</div>
-                <div style="font-size: 14px; margin-top: 10px; opacity: 0.9;">Grazie per il tuo acquisto</div>
-            `;
-            document.body.appendChild(successMessage);
-        }
-        
-        // Show the success message
-        successOverlay.classList.add('show');
-        successMessage.classList.add('show');
-        
-        // Hide after 3 seconds
-        setTimeout(() => {
-            successOverlay.classList.remove('show');
-            successMessage.classList.remove('show');
-        }, 3000);
+// Add error styles
+const style = document.createElement('style');
+style.textContent = `
+    .form-group input.error {
+        border-color: #e74c3c !important;
+        box-shadow: 0 0 0 2px rgba(231, 76, 60, 0.2) !important;
     }
+`;
+document.head.appendChild(style);
 

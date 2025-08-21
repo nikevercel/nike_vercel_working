@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, send_from_directory, send_file
+from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
 import json
 import os
@@ -52,11 +52,25 @@ def script():
 
 @app.route('/images/<path:filename>')
 def serve_images(filename):
-    """Serve image files with proper headers"""
+    """Serve image files"""
     try:
-        return send_from_directory('images', filename)
-    except:
+        import os
+        # Try multiple possible paths for images
+        possible_paths = [
+            os.path.join(os.path.dirname(__file__), 'images'),
+            os.path.join(os.getcwd(), 'images'),
+            'images',
+            './images'
+        ]
+        
+        for path in possible_paths:
+            if os.path.exists(os.path.join(path, filename)):
+                return send_from_directory(path, filename)
+        
+        # If not found, return a placeholder or error
         return "Image not found", 404
+    except Exception as e:
+        return f"Error serving image: {str(e)}", 404
 
 @app.route('/favicon.ico')
 def favicon():
@@ -67,11 +81,29 @@ def favicon():
 def static_files(filename):
     """Serve static files"""
     try:
+        import os
+        
+        # Handle image files specifically
         if filename.startswith('images/'):
+            image_name = filename.replace('images/', '')
+            possible_paths = [
+                os.path.join(os.path.dirname(__file__), 'images'),
+                os.path.join(os.getcwd(), 'images'),
+                'images',
+                './images'
+            ]
+            
+            for path in possible_paths:
+                if os.path.exists(os.path.join(path, image_name)):
+                    return send_from_directory(path, image_name)
+        
+        # Handle other static files
+        if os.path.exists(filename):
             return send_from_directory('.', filename)
-        return send_from_directory('.', filename)
-    except:
+            
         return "File not found", 404
+    except Exception as e:
+        return f"Error serving file: {str(e)}", 404
 
 @app.route('/api/orders', methods=['POST'])
 def create_order():
@@ -85,7 +117,7 @@ def create_order():
         # Load existing orders
         orders = load_orders()
         
-        # Create new order with all required fields
+        # Create new order
         order = {
             'id': len(orders) + 1,
             'nome': data.get('nome', ''),
@@ -146,36 +178,6 @@ def delete_order(order_id):
         else:
             return jsonify({'success': False, 'message': 'Ordine non trovato'})
             
-    except Exception as e:
-        return jsonify({'success': False, 'message': str(e)})
-
-@app.route('/api/stats', methods=['GET'])
-def get_stats():
-    """Get order statistics"""
-    try:
-        orders = load_orders()
-        total_orders = len(orders)
-        total_revenue = sum(float(order.get('price', 0)) for order in orders)
-        
-        # Today's orders
-        today = datetime.now().date()
-        today_orders = 0
-        for order in orders:
-            try:
-                order_date = datetime.fromisoformat(order.get('timestamp', '')).date()
-                if order_date == today:
-                    today_orders += 1
-            except:
-                pass
-        
-        return jsonify({
-            'success': True,
-            'stats': {
-                'total_orders': total_orders,
-                'total_revenue': total_revenue,
-                'today_orders': today_orders
-            }
-        })
     except Exception as e:
         return jsonify({'success': False, 'message': str(e)})
 
