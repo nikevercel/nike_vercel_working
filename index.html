@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nike Store - Just Do It</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="nav-brand">
+                <span class="nike-logo">✓ NIKE</span>
+            </div>
+            <nav class="nav-menu">
+                <a href="#" class="nav-link active">Home</a>
+                <a href="#" class="nav-link">Uomo</a>
+                <a href="#" class="nav-link">Donna</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1 class="hero-title">Just Do It</h1>
+            <p class="hero-subtitle">Scopri gli ultimi prodotti Nike con sconti fino all'80% - Fino al 30 agosto 2025 o fino ad esaurimento scorte!</p>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products">
+        <div class="container">
+            <h2 class="section-title">Prodotti in evidenza</h2>
+            <div class="products-grid">
+                <!-- Product 1 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/nike_air_force_1_07.jpeg" alt="Nike Air Force 1 '07">
+                        <span class="originale-badge">ORIGINALE</span>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Nike Air Force 1 '07</h3>
+                        <p class="product-type">Scarpe da uomo</p>
+                        <div class="product-pricing">
+                            <span class="original-price">€119.99</span>
+                            <span class="sale-price">€48</span>
+                            <span class="discount-badge">60% SCONTO</span>
+                        </div>
+                        <p class="product-availability">Fino al 30 agosto 2025 o fino ad esaurimento scorte!</p>
+                        <div class="size-selection">
+                            <h4>Seleziona taglia</h4>
+                            <div class="size-grid">
+                                <button class="size-btn" data-size="38.5">EU 38.5</button>
+                                <button class="size-btn" data-size="40">EU 40</button>
+                                <button class="size-btn" data-size="40.5">EU 40.5</button>
+                                <button class="size-btn" data-size="41">EU 41</button>
+                                <button class="size-btn" data-size="42">EU 42</button>
+                                <button class="size-btn" data-size="42.5">EU 42.5</button>
+                                <button class="size-btn" data-size="43">EU 43</button>
+                                <button class="size-btn" data-size="45">EU 45</button>
+                                <button class="size-btn" data-size="45.5">EU 45.5</button>
+                                <button class="size-btn" data-size="47.5">EU 47.5</button>
+                                <button class="size-btn" data-size="49.5">EU 49.5</button>
+                                <button class="size-btn" data-size="50.5">EU 50.5</button>
+                                <button class="size-btn" data-size="51.5">EU 51.5</button>
+                                <button class="size-btn" data-size="52.5">EU 52.5</button>
+                            </div>
+                            <button class="buy-btn" data-product="Nike Air Force 1 '07" data-price="48">Seleziona taglia</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/nike_air_max_plus.jpeg" alt="Nike Air Max Plus">
+                        <span class="originale-badge">ORIGINALE</span>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Nike Air Max Plus</h3>
+                        <p class="product-type">Scarpe da uomo</p>
+                        <div class="product-pricing">
+                            <span class="original-price">€189.99</span>
+                            <span class="sale-price">€47.5</span>
+                            <span class="discount-badge">75% SCONTO</span>
+                        </div>
+                        <p class="product-availability">Fino al 30 agosto 2025 o fino ad esaurimento scorte!</p>
+                        <div class="size-selection">
+                            <h4>Seleziona taglia</h4>
+                            <div class="size-grid">
+                                <button class="size-btn" data-size="38.5">EU 38.5</button>
+                                <button class="size-btn" data-size="40">EU 40</button>
+                                <button class="size-btn" data-size="40.5">EU 40.5</button>
+                                <button class="size-btn" data-size="41">EU 41</button>
+                                <button class="size-btn" data-size="42">EU 42</button>
+                                <button class="size-btn" data-size="42.5">EU 42.5</button>
+                                <button class="size-btn" data-size="43">EU 43</button>
+                                <button class="size-btn" data-size="45">EU 45</button>
+                                <button class="size-btn" data-size="45.5">EU 45.5</button>
+                                <button class="size-btn" data-size="47.5">EU 47.5</button>
+                                <button class="size-btn" data-size="49.5">EU 49.5</button>
+                                <button class="size-btn" data-size="50.5">EU 50.5</button>
+                                <button class="size-btn" data-size="51.5">EU 51.5</button>
+                                <button class="size-btn" data-size="52.5">EU 52.5</button>
+                            </div>
+                            <button class="buy-btn" data-product="Nike Air Max Plus" data-price="47.5">Seleziona taglia</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/nike_air_max_plus_yellow.jpeg" alt="Nike Air Max Plus Yellow">
+                        <span class="originale-badge">ORIGINALE</span>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Nike Air Max Plus Yellow</h3>
+                        <p class="product-type">Scarpe da uomo</p>
+                        <div class="product-pricing">
+                            <span class="original-price">€189.99</span>
+                            <span class="sale-price">€47.5</span>
+                            <span class="discount-badge">75% SCONTO</span>
+                        </div>
+                        <p class="product-availability">Fino al 30 agosto 2025 o fino ad esaurimento scorte!</p>
+                        <div class="size-selection">
+                            <h4>Seleziona taglia</h4>
+                            <div class="size-grid">
+                                <button class="size-btn" data-size="38.5">EU 38.5</button>
+                                <button class="size-btn" data-size="40">EU 40</button>
+                                <button class="size-btn" data-size="40.5">EU 40.5</button>
+                                <button class="size-btn" data-size="41">EU 41</button>
+                                <button class="size-btn" data-size="42">EU 42</button>
+                                <button class="size-btn" data-size="42.5">EU 42.5</button>
+                                <button class="size-btn" data-size="43">EU 43</button>
+                                <button class="size-btn" data-size="45">EU 45</button>
+                                <button class="size-btn" data-size="45.5">EU 45.5</button>
+                                <button class="size-btn" data-size="47.5">EU 47.5</button>
+                                <button class="size-btn" data-size="49.5">EU 49.5</button>
+                                <button class="size-btn" data-size="50.5">EU 50.5</button>
+                                <button class="size-btn" data-size="51.5">EU 51.5</button>
+                                <button class="size-btn" data-size="52.5">EU 52.5</button>
+                            </div>
+                            <button class="buy-btn" data-product="Nike Air Max Plus Yellow" data-price="47.5">Seleziona taglia</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/nike_air_max_plus_pink.jpeg" alt="Nike Air Max Plus Pink">
+                        <span class="originale-badge">ORIGINALE</span>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Nike Air Max Plus Pink</h3>
+                        <p class="product-type">Scarpe da donna</p>
+                        <div class="product-pricing">
+                            <span class="original-price">€189.99</span>
+                            <span class="sale-price">€47.5</span>
+                            <span class="discount-badge">75% SCONTO</span>
+                        </div>
+                        <p class="product-availability">Fino al 30 agosto 2025 o fino ad esaurimento scorte!</p>
+                        <div class="size-selection">
+                            <h4>Seleziona taglia</h4>
+                            <div class="size-grid">
+                                <button class="size-btn" data-size="38.5">EU 38.5</button>
+                                <button class="size-btn" data-size="40">EU 40</button>
+                                <button class="size-btn" data-size="40.5">EU 40.5</button>
+                                <button class="size-btn" data-size="41">EU 41</button>
+                                <button class="size-btn" data-size="42">EU 42</button>
+                                <button class="size-btn" data-size="42.5">EU 42.5</button>
+                                <button class="size-btn" data-size="43">EU 43</button>
+                                <button class="size-btn" data-size="45">EU 45</button>
+                                <button class="size-btn" data-size="45.5">EU 45.5</button>
+                                <button class="size-btn" data-size="47.5">EU 47.5</button>
+                                <button class="size-btn" data-size="49.5">EU 49.5</button>
+                                <button class="size-btn" data-size="50.5">EU 50.5</button>
+                                <button class="size-btn" data-size="51.5">EU 51.5</button>
+                                <button class="size-btn" data-size="52.5">EU 52.5</button>
+                            </div>
+                            <button class="buy-btn" data-product="Nike Air Max Plus Pink" data-price="47.5">Seleziona taglia</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 5 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/nike_air_max_dn.jpeg" alt="Nike Air Max Dn">
+                        <span class="originale-badge">ORIGINALE</span>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Nike Air Max Dn</h3>
+                        <p class="product-type">Scarpe da uomo</p>
+                        <div class="product-pricing">
+                            <span class="original-price">€169.99</span>
+                            <span class="sale-price">€42.5</span>
+                            <span class="discount-badge">75% SCONTO</span>
+                        </div>
+                        <p class="product-availability">Fino al 30 agosto 2025 o fino ad esaurimento scorte!</p>
+                        <div class="size-selection">
+                            <h4>Seleziona taglia</h4>
+                            <div class="size-grid">
+                                <button class="size-btn" data-size="38.5">EU 38.5</button>
+                                <button class="size-btn" data-size="40">EU 40</button>
+                                <button class="size-btn" data-size="40.5">EU 40.5</button>
+                                <button class="size-btn" data-size="41">EU 41</button>
+                                <button class="size-btn" data-size="42">EU 42</button>
+                                <button class="size-btn" data-size="42.5">EU 42.5</button>
+                                <button class="size-btn" data-size="43">EU 43</button>
+                                <button class="size-btn" data-size="45">EU 45</button>
+                                <button class="size-btn" data-size="45.5">EU 45.5</button>
+                                <button class="size-btn" data-size="47.5">EU 47.5</button>
+                                <button class="size-btn" data-size="49.5">EU 49.5</button>
+                                <button class="size-btn" data-size="50.5">EU 50.5</button>
+                                <button class="size-btn" data-size="51.5">EU 51.5</button>
+                                <button class="size-btn" data-size="52.5">EU 52.5</button>
+                            </div>
+                            <button class="buy-btn" data-product="Nike Air Max Dn" data-price="42.5">Seleziona taglia</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 6 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/nike_air_max_dn_se.jpeg" alt="Nike Air Max Dn SE">
+                        <span class="originale-badge">ORIGINALE</span>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Nike Air Max Dn SE</h3>
+                        <p class="product-type">Scarpe da uomo</p>
+                        <div class="product-pricing">
+                            <span class="original-price">€179.99</span>
+                            <span class="sale-price">€45</span>
+                            <span class="discount-badge">75% SCONTO</span>
+                        </div>
+                        <p class="product-availability">Fino al 30 agosto 2025 o fino ad esaurimento scorte!</p>
+                        <div class="size-selection">
+                            <h4>Seleziona taglia</h4>
+                            <div class="size-grid">
+                                <button class="size-btn" data-size="38.5">EU 38.5</button>
+                                <button class="size-btn" data-size="40">EU 40</button>
+                                <button class="size-btn" data-size="40.5">EU 40.5</button>
+                                <button class="size-btn" data-size="41">EU 41</button>
+                                <button class="size-btn" data-size="42">EU 42</button>
+                                <button class="size-btn" data-size="42.5">EU 42.5</button>
+                                <button class="size-btn" data-size="43">EU 43</button>
+                                <button class="size-btn" data-size="45">EU 45</button>
+                                <button class="size-btn" data-size="45.5">EU 45.5</button>
+                                <button class="size-btn" data-size="47.5">EU 47.5</button>
+                                <button class="size-btn" data-size="49.5">EU 49.5</button>
+                                <button class="size-btn" data-size="50.5">EU 50.5</button>
+                                <button class="size-btn" data-size="51.5">EU 51.5</button>
+                                <button class="size-btn" data-size="52.5">EU 52.5</button>
+                            </div>
+                            <button class="buy-btn" data-product="Nike Air Max Dn SE" data-price="45">Seleziona taglia</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 7 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/nike_air_max_dn_pink.jpeg" alt="Nike Air Max Dn Pink">
+                        <span class="originale-badge">ORIGINALE</span>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Nike Air Max Dn Pink</h3>
+                        <p class="product-type">Scarpe da donna</p>
+                        <div class="product-pricing">
+                            <span class="original-price">€169.99</span>
+                            <span class="sale-price">€34</span>
+                            <span class="discount-badge">80% SCONTO</span>
+                        </div>
+                        <p class="product-availability">Fino al 30 agosto 2025 o fino ad esaurimento scorte!</p>
+                        <div class="size-selection">
+                            <h4>Seleziona taglia</h4>
+                            <div class="size-grid">
+                                <button class="size-btn" data-size="38.5">EU 38.5</button>
+                                <button class="size-btn" data-size="40">EU 40</button>
+                                <button class="size-btn" data-size="40.5">EU 40.5</button>
+                                <button class="size-btn" data-size="41">EU 41</button>
+                                <button class="size-btn" data-size="42">EU 42</button>
+                                <button class="size-btn" data-size="42.5">EU 42.5</button>
+                                <button class="size-btn" data-size="43">EU 43</button>
+                                <button class="size-btn" data-size="45">EU 45</button>
+                                <button class="size-btn" data-size="45.5">EU 45.5</button>
+                                <button class="size-btn" data-size="47.5">EU 47.5</button>
+                                <button class="size-btn" data-size="49.5">EU 49.5</button>
+                                <button class="size-btn" data-size="50.5">EU 50.5</button>
+                                <button class="size-btn" data-size="51.5">EU 51.5</button>
+                                <button class="size-btn" data-size="52.5">EU 52.5</button>
+                            </div>
+                            <button class="buy-btn" data-product="Nike Air Max Dn Pink" data-price="34">Seleziona taglia</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 8 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/nike_air_max_95_by_you.jpeg" alt="Nike Air Max 95 By You">
+                        <span class="originale-badge">ORIGINALE</span>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Nike Air Max 95 By You</h3>
+                        <p class="product-type">Scarpe da uomo</p>
+                        <div class="product-pricing">
+                            <span class="original-price">€199.99</span>
+                            <span class="sale-price">€40</span>
+                            <span class="discount-badge">80% SCONTO</span>
+                        </div>
+                        <p class="product-availability">Fino al 30 agosto 2025 o fino ad esaurimento scorte!</p>
+                        <div class="size-selection">
+                            <h4>Seleziona taglia</h4>
+                            <div class="size-grid">
+                                <button class="size-btn" data-size="38.5">EU 38.5</button>
+                                <button class="size-btn" data-size="40">EU 40</button>
+                                <button class="size-btn" data-size="40.5">EU 40.5</button>
+                                <button class="size-btn" data-size="41">EU 41</button>
+                                <button class="size-btn" data-size="42">EU 42</button>
+                                <button class="size-btn" data-size="42.5">EU 42.5</button>
+                                <button class="size-btn" data-size="43">EU 43</button>
+                                <button class="size-btn" data-size="45">EU 45</button>
+                                <button class="size-btn" data-size="45.5">EU 45.5</button>
+                                <button class="size-btn" data-size="47.5">EU 47.5</button>
+                                <button class="size-btn" data-size="49.5">EU 49.5</button>
+                                <button class="size-btn" data-size="50.5">EU 50.5</button>
+                                <button class="size-btn" data-size="51.5">EU 51.5</button>
+                                <button class="size-btn" data-size="52.5">EU 52.5</button>
+                            </div>
+                            <button class="buy-btn" data-product="Nike Air Max 95 By You" data-price="40">Seleziona taglia</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 9 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/nike_air_max_dn8.jpeg" alt="Nike Air Max Dn8">
+                        <span class="originale-badge">ORIGINALE</span>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Nike Air Max Dn8</h3>
+                        <p class="product-type">Scarpe da uomo</p>
+                        <div class="product-pricing">
+                            <span class="original-price">€189.99</span>
+                            <span class="sale-price">€38</span>
+                            <span class="discount-badge">80% SCONTO</span>
+                        </div>
+                        <p class="product-availability">Fino al 30 agosto 2025 o fino ad esaurimento scorte!</p>
+                        <div class="size-selection">
+                            <h4>Seleziona taglia</h4>
+                            <div class="size-grid">
+                                <button class="size-btn" data-size="38.5">EU 38.5</button>
+                                <button class="size-btn" data-size="40">EU 40</button>
+                                <button class="size-btn" data-size="40.5">EU 40.5</button>
+                                <button class="size-btn" data-size="41">EU 41</button>
+                                <button class="size-btn" data-size="42">EU 42</button>
+                                <button class="size-btn" data-size="42.5">EU 42.5</button>
+                                <button class="size-btn" data-size="43">EU 43</button>
+                                <button class="size-btn" data-size="45">EU 45</button>
+                                <button class="size-btn" data-size="45.5">EU 45.5</button>
+                                <button class="size-btn" data-size="47.5">EU 47.5</button>
+                                <button class="size-btn" data-size="49.5">EU 49.5</button>
+                                <button class="size-btn" data-size="50.5">EU 50.5</button>
+                                <button class="size-btn" data-size="51.5">EU 51.5</button>
+                                <button class="size-btn" data-size="52.5">EU 52.5</button>
+                            </div>
+                            <button class="buy-btn" data-product="Nike Air Max Dn8" data-price="38">Seleziona taglia</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="reviews">
+        <div class="container">
+            <h2 class="section-title">Recensioni dei Clienti</h2>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <h4>TOP</h4>
+                    <p>Mio marito per un problema al piede usa solo queste da circa 20 anni.. splendide anche se sempre costosette.</p>
+                </div>
+                
+                <div class="review-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <h4>Ottime scarpe</h4>
+                    <p>Scarpe ben rifinite, molto comode e dalla calzata ottimale.</p>
+                </div>
+                
+                <div class="review-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <h4>Shock r4</h4>
+                    <p>Belline scarpe nuova edizione, già avuto molto tempo fa, fa una bella figura indossata, rimasto molto contento. Grazie.</p>
+                </div>
+                
+                <div class="review-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <h4>Nike shox</h4>
+                    <p>Ottimo prodotto già acquistato in precedenza nei punti vendita, volevo provare nel negozio online e sono rimasto soddisfatto.</p>
+                </div>
+                
+                <div class="review-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <h4>Tn donna</h4>
+                    <p>Bellissime e perfette. Calzano poco per cui consiglio di acquistare mezza taglia in più. Comode.</p>
+                </div>
+                
+                <div class="review-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <h4>Scarpa bellissima e particolare</h4>
+                    <p>Scarpa top. Avendo preso un numero in più (come sapevo) è risultata un po' grande, ma per il cambio non ho avuto problemi. Grazie.</p>
+                </div>
+                
+                <div class="review-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <h4>Ottimo!</h4>
+                    <p>Ottimo prodotto!!!!!!!!</p>
+                </div>
+                
+                <div class="review-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <h4>Modello garantito</h4>
+                    <p>Sto modello è una garanzia, sono stilose e comode allo stesso tempo :)</p>
+                </div>
+                
+                <div class="review-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <h4>Soddisfattissima</h4>
+                    <p>Bellissime e voi affidabilissimi.</p>
+                </div>
+                
+                <div class="review-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <h4>Top</h4>
+                    <p>Prodotto perfetto come ti aspetti da Nike, arrivato senza intoppi, tempi di spedizione veloci e precisi. Tutto al top!</p>
+                </div>
+                
+                <div class="review-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <h4>Molto comoda</h4>
+                    <p>Scarpa molto comoda facile da indossare.</p>
+                </div>
+                
+                <div class="review-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <h4>Meravigliosa</h4>
+                    <p>La scarpa meravigliosa, la mia figlia la usa 4 stagioni. Unica pecca che già il 2° paio gli crepa la suola dietro.</p>
+                </div>
+                
+                <div class="review-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <h4>Shox top</h4>
+                    <p>Ottimo prodotto. Nike sempre Top. Unico neo: preso 42, forse meglio un mezzo numero in più.</p>
+                </div>
+                
+                <div class="review-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <h4>Servizio impeccabile</h4>
+                    <p>Non è la prima volta che faccio acquisti sul sito e sicuramente non sarà l'ultima. Ho ordinato un numero sbagliato, ho avviato la restituzione e nei tempi previsti mi è arrivato il rimborso e subito il nuovo paio.</p>
+                </div>
+                
+                <div class="review-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <h4>Davvero ottime!</h4>
+                    <p>Davvero ottime! Grazie acquisterò altro sicuramente.</p>
+                </div>
+                
+                <div class="review-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <h4>Servizio perfetto</h4>
+                    <p>Servizio perfetto! !!!!soddisfatta</p>
+                </div>
+                
+                <div class="review-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <h4>Great pair</h4>
+                    <p>A great pair of shoes!!!</p>
+                </div>
+                
+                <div class="review-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <h4>Nike Air Force</h4>
+                    <p>Un classico, le definirei necessarie.</p>
+                </div>
+                
+                <div class="review-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <h4>Ottimo</h4>
+                    <p>Scarpe perfette come richiesto. Spedizione veloce e perfetta.</p>
+                </div>
+                
+                <div class="review-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <h4>Ottimo prodotto!</h4>
+                    <p>Ottimo e iconico prodotto! (consegna leggermente in ritardo di qualche giorno)</p>
+                </div>
+                
+                <div class="review-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <h4>Ottima scarpa</h4>
+                    <p>Ottima scarpe comprata più volte.</p>
+                </div>
+                
+                <div class="review-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <h4>Pacco arrivato in tempo</h4>
+                    <p>Pacco arrivato in tempo. Buono il prodotto, ho già acquistato più volte.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Purchase Modal -->
+    <div id="purchaseModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close">&times;</span>
+                <h2 id="modalTitle">Nike Air Force 1 '07 - EU 40</h2>
+            </div>
+            <form id="purchaseForm">
+                <div class="form-section">
+                    <h3>📍 Informazioni di spedizione</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="nome">Nome</label>
+                            <input type="text" id="nome" name="nome" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="cognome">Cognome</label>
+                            <input type="text" id="cognome" name="cognome" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Indirizzo email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="telefono">Numero di telefono</label>
+                        <input type="tel" id="telefono" name="telefono" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="indirizzo">Indirizzo</label>
+                        <input type="text" id="indirizzo" name="indirizzo" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="citta">Città</label>
+                            <input type="text" id="citta" name="citta" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="codicePostale">Codice postale</label>
+                            <input type="text" id="codicePostale" name="codicePostale" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="paese">Paese</label>
+                        <input type="text" id="paese" name="paese" required>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3>💳 Informazioni di pagamento</h3>
+                    <div class="payment-icons">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCA0MCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjQwIiBoZWlnaHQ9IjI0IiByeD0iNCIgZmlsbD0iIzAwNTFBNSIvPgo8cGF0aCBkPSJNMTYuNzUgMTJIMTMuMjVWOC41SDE2Ljc1VjEyWiIgZmlsbD0id2hpdGUiLz4KPC9zdmc+" alt="Visa">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCA0MCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjQwIiBoZWlnaHQ9IjI0IiByeD0iNCIgZmlsbD0iI0VCMDAxQiIvPgo8Y2lyY2xlIGN4PSIxNSIgY3k9IjEyIiByPSI2IiBmaWxsPSIjRkY1RjAwIi8+CjxjaXJjbGUgY3g9IjI1IiBjeT0iMTIiIHI9IjYiIGZpbGw9IiNGRkY1RjAiLz4KPC9zdmc+" alt="Mastercard">
+                    </div>
+                    <div class="form-group">
+                        <label for="numeroCarta">Numero della carta</label>
+                        <input type="text" id="numeroCarta" name="numeroCarta" placeholder="1234 5678 9012 3456" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="intestatario">Intestatario della carta</label>
+                        <input type="text" id="intestatario" name="intestatario" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="scadenza">Data di scadenza</label>
+                            <input type="text" id="scadenza" name="scadenza" placeholder="MM/AA" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="cvv">CVV</label>
+                            <input type="text" id="cvv" name="cvv" placeholder="123" required>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn" id="submitBtn">COMPLETA L'ACQUISTO - €48</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
